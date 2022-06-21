@@ -27,11 +27,11 @@ function App() {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		return async () => {
+		(async () => {
 			const {data} = await getAllUsers();
 			if (data) dispatch({type: cases.STORE_API_DATA, payload: data});
 			setIsLoading(false);
-		};
+		})();
 	}, [dispatch]);
 
 	const setSingleUserData = async (id) => {
@@ -66,7 +66,7 @@ function App() {
 							<h1>click on the button to load data</h1>
 						)}
 					</div>
-					<div className='btn'>
+					<div className="btn">
 					{users.map((u, ind) => (
 						<div key={u.id}>
 							<Button
